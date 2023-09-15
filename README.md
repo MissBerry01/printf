@@ -1,1 +1,1 @@
-This is the printf group project
+The printf group project
