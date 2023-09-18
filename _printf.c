@@ -1,4 +1,5 @@
 #include "main.h"
+#include "print_positives.c"
 
 /**
  * _printf - Prints formatted text into the std output
