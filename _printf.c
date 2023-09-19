@@ -69,6 +69,7 @@ int format_specifier(const char *format, va_list arguments)
 	{
 		binary_num = va_arg(arguments, unsigned int);
 		printed_characters += print_binary(binary_num);
+	}
 	else
 	{
 		printed_characters += print_percent();

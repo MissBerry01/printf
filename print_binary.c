@@ -20,9 +20,9 @@ int print_binary(unsigned int n)
 	idx = 0;
 	while (n > 0)
 	{
-		binary_buffer[index] = (n % 2) + '0';
+		binary_buffer[idx] = (n % 2) + '0';
 		n /= 2;
-		index++;
+		idx++;
 	}
 
 	for (i = idx - 1; i >= 0; i--)
