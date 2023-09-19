@@ -73,3 +73,46 @@ int format_specifier2(const char *format, va_list arguments)
 
 	return (printed_characters);
 }
+
+/**
+ * print_unsigned_number - Print an unsigned
+ * @n: The unsigned integer to print
+ * Return: The number of characters printed
+ */
+int print_unsigned_number(unsigned int n)
+{
+	char buffer[1024];
+	int printed = 0;
+
+	if (n == 0)
+	{
+		return (print_char('0'));
+	}
+
+	sprintf(buffer, "%u", n);
+	printed += print_string(buffer);
+
+	return (printed);
+}
+
+/**
+ * print_octal_number - Print an octal number
+ * @n: The unsigned integer to print as octal
+ * Return: The number of characters printed
+ */
+int print_octal_number(unsigned int n)
+{
+	char buffer[1024];
+	int printed = 0;
+
+	if (n == 0)
+	{
+		return (print_char('0'));
+	}
+
+	sprintf(buffer, "%o", n);
+	printed += print_string(buffer);
+
+	return (printed);
+}
+
