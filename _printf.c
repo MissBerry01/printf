@@ -9,6 +9,7 @@
 int _printf(const char *format, ...)
 {
 	int printed_characters = 0;
+	int num;
 
 	va_list arguments;
 
@@ -30,6 +31,18 @@ int _printf(const char *format, ...)
 				printed_characters += print_string(va_arg(arguments, char *));
 			else if (*format == '%')
 				printed_characters += print_percent();
+
+			else if (*format == 'd' || *format == 'i')
+			{
+				num = va_arg(arguments, int);
+				if (num < 0)
+				{
+					printed_characters += print_percent();
+					printed_characters += print_char('-');
+					num = -num;
+				}
+				printed_characters += print_number(num);
+			}
 			else
 			{
 				printed_characters += print_percent();
