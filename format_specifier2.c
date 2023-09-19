@@ -1,42 +1,6 @@
 #include "main.h"
 
 /**
- * format_specifier2 - Handles format specifiers
- * @format: Format specifier
- * @arguments: Variable argument list
- * Return: The number of chars printed
- */
-int format_specifier2(const char *format, va_list arguments)
-{
-	int printed_characters = 0;
-	unsigned int unsigned_num, octal_num, hex_num;
-
-	if (*(format + 1) == 'u' && *format == '%')
-	{
-		unsigned_num = va_arg(arguments, unsigned int);
-		printed_characters += print_unsigned_number(unsigned_num);
-	}
-	else if (*format == '%' && *(format + 1) == 'o')
-	{
-		octal_num = va_arg(arguments, unsigned int);
-		printed_characters += print_octal_number(octal_num);
-	}
-
-	else if (*format == '%' && (*(format + 1) == 'x' || *(format + 1) == 'X'))
-	{
-		hex_num = va_arg(arguments, unsigned int);
-		printed_characters += print_hex_number(hex_num, *(format + 1));
-	}
-	else
-	{
-		printed_characters += print_percent();
-		printed_characters += print_char(*format);
-	}
-
-	return (printed_characters);
-}
-
-/**
  * print_unsigned_number - Print an unsigned
  * @n: The unsigned integer to print
  * Return: The number of characters printed
