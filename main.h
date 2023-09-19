@@ -19,5 +19,6 @@ int print_hex_number(unsigned int n, int is_upper);
 int print_string_with_escaping(char *s);
 int print_hex_ascii_value(char c);
 int print_pointer_address(void *ptr);
+int print_number(int n, int plus_flag, int space_flag);
 
 #endif
