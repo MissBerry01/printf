@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * _printf - Prints formatted text into the std output
+ * _printf2 - Prints formatted text into the std output
  * @format: string with the format specifiers
  * Return: The number of characters printed
  */
 
-int _printf(const char *format, ...)
+int _printf2(const char *format, ...)
 {
 	int printed_characters = 0;
 
@@ -116,3 +116,33 @@ int print_octal_number(unsigned int n)
 	return (printed);
 }
 
+/**
+ * print_hex_number - Print a hexadecimal number
+ * @n: The unsigned integer to print as hexadecimal
+ * @is_upper: Whether to print in uppercase (1) or lowercase (0)
+ * Return: The number of characters printed
+ */
+
+int print_hex_number(unsigned int n, int is_upper)
+{
+	char buffer[1024];
+	int printed = 0;
+
+	if (n == 0)
+	{
+		return (print_char('0'));
+	}
+
+	if (is_upper)
+	{
+		sprintf(buffer, "%X", n);
+	}
+	else
+	{
+		sprintf(buffer, "%x", n);
+	}
+
+	printed += print_string(buffer);
+
+	return (printed);
+}
