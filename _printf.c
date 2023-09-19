@@ -66,6 +66,7 @@ int format_specifier(const char *format, va_list arguments)
 	}
 	else
 	{
+		printed_characters += print_percent();
 		printed_characters += print_char(*format);
 	}
 	return (printed_characters);
