@@ -25,6 +25,11 @@ int print_number(int n)
 {
 	int printed;
 
+	if (n == 0)
+	{
+		return print_char('0');
+	}
+
 	if (n < 0)
 	{
 
