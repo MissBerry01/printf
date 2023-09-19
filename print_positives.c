@@ -19,6 +19,7 @@ int print_positive_number(int n)
 		printed += print_positive_number(n / 10);
 	}
 	printed += print_char((n % 10) + '0');
+
 	return (printed);
 }
 /**
