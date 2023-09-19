@@ -44,12 +44,10 @@ int _printf(const char *format, ...)
  */
 int format_specifier(const char *format, va_list arguments)
 {
-	int printed_characters = 0, num, width;
+	int printed_characters = 0, num;
 	unsigned int binary_num, unsigned_num, octal_num, hex_num;
 	char *str;
 	void *ptr;
-	short short_num;
-	long long_num;
 
 	if (*format == 'c')
 		printed_characters += print_char(va_arg(arguments, int));

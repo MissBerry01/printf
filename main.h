@@ -20,9 +20,5 @@ int print_string_with_escaping(char *s);
 int print_hex_ascii_value(char c);
 int print_pointer_address(void *ptr);
 int print_number(int n, int plus_flag, int space_flag);
-int print_long_number(long n);
-int print_short_number(short n);
-int print_positive_long_number(long n);
-int print_positive_short_number(short n);
 
 #endif
