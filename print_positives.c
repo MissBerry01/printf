@@ -21,6 +21,29 @@ int print_positive_number(int n)
 	printed += print_char((n % 10) + '0');
 	return (printed);
 }
+/**
+ * print_number - Print a signed integer to std output
+ * @n: The integer to print
+ * Return: The number of characters printed
+ */
+int print_number(int n)
+{
+	int printed;
+
+	if (n < 0)
+	{
+
+		printed = 0;
+		printed += print_char('-');
+		printed += print_positive_number(-n);
+		
+		return (printed);
+	}
+	else
+	{
+		return (print_positive_number(n));
+	}
+}
 
 /**
  * print_number - Print a signed integer to std output
