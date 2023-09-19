@@ -1,5 +1,4 @@
 #include "main.h"
-#include "format_specifier2.c"
 
 /**
  * _printf - Prints formatted text into the std output
@@ -45,9 +44,8 @@ int _printf(const char *format, ...)
  */
 int format_specifier(const char *format, va_list arguments)
 {
-	int printed_characters = 0;
-	int num;
-	unsigned int binary_num;
+	int printed_characters = 0, num;
+	unsigned int binary_num, unsigned_num, octal_num, hex_num;
 
 	if (*format == 'c')
 		printed_characters += print_char(va_arg(arguments, int));
@@ -71,6 +69,23 @@ int format_specifier(const char *format, va_list arguments)
 		binary_num = va_arg(arguments, unsigned int);
 		printed_characters += print_binary(binary_num);
 	}
+	else if (*format == 'u')
+	{
+		unsigned_num = va_arg(arguments, unsigned int);
+		printed_characters += print_unsigned_number(unsigned_num);
+	}
+	else if (*format == 'o')
+	{
+		octal_num = va_arg(arguments, unsigned int);
+		printed_characters += print_octal_number(octal_num);
+	}
+
+	else if (*format == 'x' || *format == 'X')
+	{
+		hex_num = va_arg(arguments, unsigned int);
+		printed_characters += print_hex_number(hex_num, *format);
+	}
+
 	else
 	{
 		printed_characters += print_percent();
