@@ -46,6 +46,7 @@ int format_specifier(const char *format, va_list arguments)
 {
 	int printed_characters = 0;
 	int num;
+	unsigned int binary_num;
 
 	if (*format == 'c')
 		printed_characters += print_char(va_arg(arguments, int));
@@ -64,6 +65,10 @@ int format_specifier(const char *format, va_list arguments)
 		}
 		printed_characters += print_positive_number(num);
 	}
+	else if (*format == 'b')
+	{
+		binary_num = va_arg(arguments, unsigned int);
+		printed_characters += print_binary(binary_num);
 	else
 	{
 		printed_characters += print_percent();
