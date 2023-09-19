@@ -32,3 +32,84 @@ int print_binary(unsigned int n)
 
 	return (printed);
 }
+
+/**
+ * print_long_number - Print a long integer to std output
+ * @n: The long integer to print
+ * Return: The number of characters printed
+ */
+
+int print_long_number(long n)
+{
+	int printed = 0;
+
+	if (n < 0)
+	{
+		printed += print_char('-');
+		n = -n;
+	}
+
+	printed += print_positive_long_number(n);
+
+	return (printed);
+}
+
+/**
+ * print_positive_long_number - Print a positive long integer
+ * @n: The positive long integer to print
+ * Return: The number of characters printed
+ */
+
+int print_positive_long_number(long n)
+{
+	int printed = 0;
+
+	if (n / 10 != 0)
+	{
+		printed += print_positive_long_number(n / 10);
+	}
+
+	printed += print_char((n % 10) + '0');
+	return (printed);
+}
+
+/**
+ * print_short_number - Print a short integer to std output
+ * @n: The short integer to print
+ * Return: The number of characters printed
+ */
+
+int print_short_number(short n)
+{
+	int printed = 0;
+
+	if (n < 0)
+	{
+		printed += print_char('-');
+		n = -n;
+	}
+
+	printed += print_positive_short_number(n);
+
+	return (printed);
+}
+
+/**
+ * print_positive_short_number - Print a positive short integer
+ * @n: The positive short integer to print
+ * Return: The number of characters printed
+ */
+
+int print_positive_short_number(short n)
+{
+	int printed = 0;
+
+	if (n / 10 != 0)
+	{
+		printed += print_positive_short_number(n / 10);
+	}
+
+	printed += print_char((n % 10) + '0');
+
+	return (printed);
+}
