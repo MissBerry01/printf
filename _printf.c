@@ -9,7 +9,6 @@
 int _printf(const char *format, ...)
 {
 	int printed_characters = 0;
-	int num;
 
 	va_list arguments;
 
@@ -24,30 +23,7 @@ int _printf(const char *format, ...)
 			{
 				break;
 			}
-
-			if (*format == 'c')
-				printed_characters += print_char(va_arg(arguments, int));
-			else if (*format == 's')
-				printed_characters += print_string(va_arg(arguments, char *));
-			else if (*format == '%')
-				printed_characters += print_percent();
-
-			else if (*format == 'd' || *format == 'i')
-			{
-				num = va_arg(arguments, int);
-				if (num < 0)
-				{
-					printed_characters += print_percent();
-					printed_characters += print_char('-');
-					num = -num;
-				}
-				printed_characters += print_number(num);
-			}
-			else
-			{
-				printed_characters += print_percent();
-				printed_characters += print_char(*format);
-			}
+			printed_characters += format_specifier(format, arguments);
 		}
 		else
 		{
@@ -57,7 +33,44 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(arguments);
+	return (printed_characters);
+}
 
+/**
+ * format_specifier - Handles format specifiers
+ * @format: Format specifier
+ * @arguments: Variable argument list
+ * Return: The number of charss printed
+ */
+int format_specifier(const char *format, va_list arguments)
+{
+	int printed_characters = 0;
+	int num;
+
+	if (*format == 'c')
+		printed_characters += print_char(va_arg(arguments, int));
+	else if (*format == 's')
+		printed_characters += print_string(va_arg(arguments, char *));
+	else if (*format == '%')
+		printed_characters += print_percent();
+
+	else if (*format == 'd' || *format == 'i')
+	{
+		num = va_arg(arguments, int);
+		if (num < 0)
+		{
+			printed_characters += print_percent();
+			printed_characters += print_char('-');
+			num = -num;
+		}
+		printed_characters += print_positive_number(num);
+	}
+	else
+	{
+		printed_characters += print_percent();
+		printed_characters += print_char(*format);
+		}
+	}
 	return (printed_characters);
 }
 
@@ -68,14 +81,15 @@ int _printf(const char *format, ...)
  */
 int print_string(char *s)
 {
-	int print = 0;
+	int printed;
 
+	printed = 0;
 	while (*s)
 	{
-		print += write(1, s, 1);
+		printed += write(1, s, 1);
 		s++;
 	}
-	return (print);
+	return (printed);
 }
 
 /**
