@@ -133,10 +133,11 @@ int print_hex_number(unsigned int n, int is_upper)
 		return (print_char('0'));
 	}
 
-	if (is_upper)
+	if (is_upper == 'X')
 	{
 		sprintf(buffer, "%X", n);
 	}
+
 	else
 	{
 		sprintf(buffer, "%x", n);
