@@ -47,6 +47,7 @@ int format_specifier(const char *format, va_list arguments)
 	int printed_characters = 0, num;
 	unsigned int binary_num, unsigned_num, octal_num, hex_num;
 	char *str;
+	void *ptr;
 
 	if (*format == 'c')
 		printed_characters += print_char(va_arg(arguments, int));
@@ -90,6 +91,12 @@ int format_specifier(const char *format, va_list arguments)
 	{
 		str = va_arg(arguments, char *);
 		printed_characters += print_string_with_escaping(str);
+	}
+
+	else if (*format == 'p')
+	{
+		ptr = va_arg(arguments, void *);
+		printed_characters += print_pointer_address(ptr);
 	}
 	else
 	{

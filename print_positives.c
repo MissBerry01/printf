@@ -38,3 +38,19 @@ int print_number(int n)
 		return (print_positive_number(n));
 	}
 }
+
+/**
+ * print_pointer_address - Print a pointer address
+ * @ptr: The pointer to print
+ * Return: The number of chars printed
+ */
+
+int print_pointer_address(void *ptr)
+{
+	unsigned long int address = (unsigned long int)ptr;
+	int printed = 0;
+
+	printed += print_string("0x");
+	printed += print_hex_number(address, 'x');
+	return (printed);
+}
