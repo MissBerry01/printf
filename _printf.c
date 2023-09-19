@@ -60,26 +60,13 @@ int format_specifier(const char *format, va_list arguments)
 
 	else if (*format == 'd' || *format == 'i')
 	{
-		if (format[1] == 'l')
+		num = va_arg(arguments, int);
+		if (num < 0)
 		{
-			long_num = va_arg(arguments, long);
-			printed_characters += print_positive_long_number(long_num);
+			printed_characters += print_char('-');
+			num = -num;
 		}
-		else if (format[1] == 'h')
-		{
-			short_num = va_arg(arguments, int);
-			printed_characters += print_positive_short_number(short_num);
-		}
-		else
-		{
-			num = va_arg(arguments, int);
-			if (num < 0)
-			{
-				printed_characters += print_char('-');
-				num = -num;
-			}
-			printed_characters += print_positive_number(num);
-		}
+		printed_characters += print_positive_number(num);
 	}
 	else if (*format == 'b')
 	{
