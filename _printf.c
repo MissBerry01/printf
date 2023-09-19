@@ -46,6 +46,7 @@ int format_specifier(const char *format, va_list arguments)
 {
 	int printed_characters = 0, num;
 	unsigned int binary_num, unsigned_num, octal_num, hex_num;
+	char *str;
 
 	if (*format == 'c')
 		printed_characters += print_char(va_arg(arguments, int));
@@ -85,7 +86,11 @@ int format_specifier(const char *format, va_list arguments)
 		hex_num = va_arg(arguments, unsigned int);
 		printed_characters += print_hex_number(hex_num, *format);
 	}
-
+	else if (*format == 'S')
+	{
+		str = va_arg(arguments, char *);
+		printed_characters += print_string_with_escaping(str);
+	}
 	else
 	{
 		printed_characters += print_percent();

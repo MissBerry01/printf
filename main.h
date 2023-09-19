@@ -13,10 +13,10 @@ int print_percent(void);
 int print_positive_number(int n);
 int print_number(int n);
 int print_binary(unsigned int n);
-int format_specifier2(const char *format, va_list arguments);
-int _printf2(const char *format, ...);
 int print_unsigned_number(unsigned int n);
 int print_octal_number(unsigned int n);
 int print_hex_number(unsigned int n, int is_upper);
+int print_string_with_escaping(char *s);
+int print_hex_ascii_value(char c);
 
 #endif
