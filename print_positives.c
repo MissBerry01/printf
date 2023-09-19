@@ -54,4 +54,4 @@ int print_pointer_address(void *ptr)
 	printed += print_string(buffer);
 
 	return (printed);
-i}
+}
