@@ -47,10 +47,11 @@ int print_number(int n)
 
 int print_pointer_address(void *ptr)
 {
-	unsigned long int address = (unsigned long int)ptr;
+	char buffer[1024];
 	int printed = 0;
 
-	printed += print_string("0x");
-	printed += print_hex_number(address, 'x');
+	sprintf(buffer, "%p", ptr);
+	printed += print_string(buffer);
+
 	return (printed);
-}
+i}
