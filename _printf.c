@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
  */
 int format_specifier(const char *format, va_list arguments)
 {
-	int printed_characters = 0, num;
+	int printed_characters = 0, num, width;
 	unsigned int binary_num, unsigned_num, octal_num, hex_num;
 	char *str;
 	void *ptr;
