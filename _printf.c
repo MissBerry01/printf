@@ -82,6 +82,7 @@ int format_specifier(const char *format, va_list arguments)
 		printed_characters += print_octal_number(octal_num);
 	}
 
+
 	else if (*format == 'x' || *format == 'X')
 	{
 		hex_num = va_arg(arguments, unsigned int);

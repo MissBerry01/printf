@@ -22,28 +22,35 @@ int print_positive_number(int n)
 
 	return (printed);
 }
+
 /**
  * print_number - Print a signed integer to std output
  * @n: The integer to print
+ * @plus_flag: Flag to indicate if '+' flag is present
+ * @space_flag: Flag to indicate space is present
  * Return: The number of characters printed
  */
-int print_number(int n)
+
+int print_number(int n, int plus_flag, int space_flag)
 {
-	int printed;
+	int printed = 0;
 
 	if (n < 0)
 	{
-
-		printed = 0;
 		printed += print_char('-');
-		printed += print_positive_number(-n);
-		
-		return (printed);
+		n = -n;
 	}
-	else
+	else if (plus_flag)
 	{
-		return (print_positive_number(n));
+		printed += print_char('+');
 	}
+	else if (space_flag)
+	{
+		printed += print_char(' ');
+	}
+	printed += print_positive_number(n);
+
+	return (printed);
 }
 
 /**
