@@ -16,7 +16,7 @@ int print_binary(unsigned int n)
 		printed += print_char('0');
 		return (printed);
 	}
-	
+
 	idx = 0;
 	while (n > 0)
 	{
