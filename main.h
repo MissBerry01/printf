@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stddef.h>
 
 int _printf(const char *format, ...);
 int format_specifier(const char *format, va_list arguments);
