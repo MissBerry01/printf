@@ -59,7 +59,6 @@ int format_specifier(const char *format, va_list arguments)
 		num = va_arg(arguments, int);
 		if (num < 0)
 		{
-			printed_characters += print_percent();
 			printed_characters += print_char('-');
 			num = -num;
 		}
