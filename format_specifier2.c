@@ -116,3 +116,34 @@ int print_octal_number(unsigned int n)
 	return (printed);
 }
 
+/**
+ * print_hex_number - Print a hexadecimal number
+ * @n: The unsigned integer to print as hexadecimal
+ * @is_upper: Whether to print in uppercase (X) or lowercase (x)
+ * Return: The number of characters printed
+ */
+
+int print_hex_number(unsigned int n, char is_upper)
+{
+	char buffer[1024];
+	int printed = 0;
+
+	if (n == 0)
+	{
+		return (print_char('0'));
+	}
+
+	if (is_upper == 'X')
+	{
+		sprintf(buffer, "%X", n);
+	}
+
+	else
+	{
+		sprintf(buffer, "%x", n);
+	}
+
+	printed += print_string(buffer);
+
+	return (printed);
+}
