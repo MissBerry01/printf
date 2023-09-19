@@ -49,21 +49,21 @@ int format_specifier2(const char *format, va_list arguments)
 	int printed_characters = 0;
 	unsigned int unsigned_num, octal_num, hex_num;
 
-	if (*format == 'u')
+	if (*(format + 1) == 'u' && *format == '%')
 	{
 		unsigned_num = va_arg(arguments, unsigned int);
 		printed_characters += print_unsigned_number(unsigned_num);
 	}
-	else if (*format == 'o')
+	else if (*format == '%' && *(format + 1) == 'o')
 	{
 		octal_num = va_arg(arguments, unsigned int);
 		printed_characters += print_octal_number(octal_num);
 	}
 
-	else if (*format == 'x' || *format == 'X')
+	else if (*format == '%' && (*(format + 1) == 'x' || *(format + 1) == 'X'))
 	{
 		hex_num = va_arg(arguments, unsigned int);
-		printed_characters += print_hex_number(hex_num, *format);
+		printed_characters += print_hex_number(hex_num, *(format + 1));
 	}
 	else
 	{
